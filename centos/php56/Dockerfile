@@ -3,13 +3,14 @@ From centos:7
 MAINTAINER Rizha <pseudecoder@gmail.com>
 
 # Update packages
-RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
-  rpm -Uvh https://centos7.iuscommunity.org/ius-release.rpm && yum update -y
+RUN rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm && \
+  rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm && \
+  yum update -y
 
-# Install PHP
-RUN yum install -y php56u-cli php56u-common php56u-fpm \
-  php56u-mbstring php56u-mcrypt php56u-pdo php56u-pecl-imagick php56u-pecl-mongo \
-  php56u-pecl-xdebug php56u-xml
+# Installing php-fpm and module
+
+RUN yum --enablerepo=remi,remi-php56 install -y php-cli php-fpm php-common \
+  php-pecl-mongo php-mcrypt php-mbstring php-pdo php-xml
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
