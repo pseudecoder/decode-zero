@@ -1,0 +1,27 @@
+nginx:
+  build: centos/nginx
+  links:
+    - php56
+  ports:
+    - 80:80
+    - 443:443
+
+php56:
+  build: centos/php56
+  expose:
+    - 9000
+  links:
+    - mongodb
+    - redis
+
+mongodb:
+  build: centos/mongodb
+  ports:
+    - 27017:27017
+  expose:
+    - 27017
+
+redis:
+  build: centos/redis
+  expose:
+    - 6379
