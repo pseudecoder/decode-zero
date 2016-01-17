@@ -1,0 +1,3 @@
+*.yml
+!myapp-compose.yml
+!docker-compose.yml
