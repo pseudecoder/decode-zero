@@ -19,7 +19,7 @@ php56:
     - 9000
   links:
     - mongodb
-    - redis
+    - redis_storage
 
 mongodb:
   build: centos/mongodb
@@ -30,7 +30,9 @@ mongodb:
   expose:
     - 27017
 
-redis:
+redis_storage:
   build: centos/redis
   expose:
     - 6379
+  ports:
+    - 6379:6379

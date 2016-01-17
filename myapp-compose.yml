@@ -19,7 +19,7 @@ php56:
     - 9000
   links:
     - mongodb
-    - redis
+    - redis_storage
 
 mongodb:
   image: pseudecoder/centos-mongodb
@@ -30,7 +30,7 @@ mongodb:
   expose:
     - 27017
 
-redis:
+redis_storage:
   image: pseudecoder/centos-redis
   expose:
     - 6379
