@@ -1,7 +1,0 @@
-*
-!.gitignore
-!info.php
-!container-config
-!container-config/*
-!log
-!log/*
