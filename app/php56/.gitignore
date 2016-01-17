@@ -1,0 +1,5 @@
+*
+!.gitignore
+!info.php
+!container-config
+!log
