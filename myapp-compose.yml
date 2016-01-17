@@ -1,6 +1,7 @@
 # Using php56 from ready image on docker hub
 nginx:
-  build: centos/nginx
+  container_name: myapp_nginx
+  image: pseudecoder/centos-nginx
   volumes:
     - ./app/php56/container-config/nginx/sites-available:/etc/nginx/sites-available
     - ./app/php56/container-config/nginx/sites-enabled:/etc/nginx/sites-enabled
@@ -12,7 +13,8 @@ nginx:
     - 443:443
 
 php56:
-  build: centos/php56
+  container_name: myapp_php56
+  image: pseudecoder/centos-php56
   volumes:
     - ./app/php56/www:/var/www
     - ./app/php56/container-config/php56:/etc/php-fpm.d
@@ -23,7 +25,8 @@ php56:
     - redis
 
 mongodb:
-  build: centos/mongodb
+  container_name: myapp_mongodb
+  image: pseudecoder/centos-mongodb
   volumes:
     - ./app/php56/container-config/mongodb:/etc/mongodb
   ports:
@@ -32,6 +35,7 @@ mongodb:
     - 27017
 
 redis:
-  build: centos/redis
+  container_name: myapp_redis
+  image: pseudecoder/centos-redis
   expose:
     - 6379
