@@ -5,6 +5,7 @@ nginx:
     - ./app/php56/container-config/nginx/sites-available:/etc/nginx/sites-available
     - ./app/php56/container-config/nginx/sites-enabled:/etc/nginx/sites-enabled
     - ./app/php56/www:/var/www
+    - ./app/php56/log/nginx:/var/log/nginx
   links:
     - php56
   ports:
@@ -26,6 +27,8 @@ mongodb:
   build: centos/mongodb
   volumes:
     - ./app/php56/container-config/mongodb:/etc/mongodb
+    - ./app/php56/log/mongodb:/var/log/mongodb
+    - ./app/php56/data/mongodb:/var/lib/mongo
   ports:
     - 27017:27017
   expose:
