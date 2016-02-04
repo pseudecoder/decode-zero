@@ -1,6 +1,6 @@
 .DS_Store
-*.yml
-config*
+./*.yml
+./config*
 
 !default-docker-compose.yml
 !config
