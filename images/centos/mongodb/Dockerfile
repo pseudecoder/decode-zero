@@ -2,7 +2,7 @@ From centos:7
 
 # Install mongodb
 ADD mongodb-org-3.2.repo /etc/yum.repos.d/
-RUN yum update -y && yum install -y mongodb-org-server && \
+RUN yum update -y && yum install -y mongodb-org-server mongodb-org-shell && \
   yum clean all
 
 # Add Mongodb custom config
