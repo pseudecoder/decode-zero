@@ -2,35 +2,28 @@
 nginx:
   image: pseudecoder/centos-nginx
   volumes:
-    - ./centos/config/nginx/sites:/etc/nginx/sites
+    - ./config/nginx/sites:/etc/nginx/sites
     - ./app/php56/www:/var/www
   links:
-    - php56
+    - default_web
   ports:
     - 80:80
     - 443:443
 
-php56:
+default_web:
   image: pseudecoder/centos-php56
   volumes:
-    - ./centos/config/php56:/etc/php-fpm.d
-    - ./app/php56/www:/var/www
-  expose:
-    - 9000
+    - ./config/php56-fpm/www.conf:/etc/php-fpm.d/www.conf
   links:
     - mongodb
-    - redis_storage
+    - redisdb
 
 mongodb:
   image: pseudecoder/centos-mongodb
   volumes:
-    - ./centos/config/mongodb/mongod.conf:/etc/mongod.conf
-  ports:
-    - 27017:27017
-  expose:
-    - 27017
+    - ./config/mongodb/mongod.conf:/etc/mongod.conf
 
-redis_storage:
+redisdb:
   image: pseudecoder/centos-redis
-  expose:
-    - 6379
+  volumes:
+    - ./config/redis/redis.conf:/etc/redis/redis.conf

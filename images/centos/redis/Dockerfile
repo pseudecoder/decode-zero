@@ -1,7 +1,5 @@
 From centos:7
 
-MAINTAINER Rizha <pseudecoder@gmail.com>
-
 # Install make & gcc for building redis
 RUN yum update -y && yum install -y gcc make && yum clean all
 
@@ -16,5 +14,7 @@ RUN cd /tmp && \
   cp -f redis.conf /etc/redis && \
   rm -rf /tmp/redis*
   
+
+EXPOSE 6379
 
 CMD ["redis-server", "/etc/redis/redis.conf"]

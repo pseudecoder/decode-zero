@@ -1,7 +1,5 @@
 FROM centos:7
 
-MAINTAINER Rizha <pseudecoder@gmail.com>
-
 # Install Nginx
 ADD nginx.repo /etc/yum.repos.d/
 RUN cd /tmp && \
@@ -16,5 +14,7 @@ RUN yum clean all && rm -rf /tmp/nginx*
 # Replace default nginx with 101-Nginx
 RUN rm -rf /etc/nginx
 ADD 101-nginx /etc/nginx
+
+EXPOSE 80 443
 
 CMD ["nginx", "-g", "daemon off;"]
