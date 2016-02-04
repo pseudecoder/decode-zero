@@ -1,0 +1,11 @@
+nginx:
+  build: centos/nginx
+
+php56:
+  build: centos/php56
+
+redis:
+  build: centos/redis
+
+mongodb:
+  build: centos/mongodb
