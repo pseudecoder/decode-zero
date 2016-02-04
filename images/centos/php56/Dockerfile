@@ -12,6 +12,9 @@ RUN yum --enablerepo=remi,remi-php56 install -y php-fpm php-cli php-common \
 # Install supervisor and cronie: for php jobs
 RUN yum install -y supervisor cronie
 
+# Install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
 # Cleanup
 RUN yum clean all && rm -rf /tmp/*
 
